@@ -135,7 +135,7 @@ allow(User, ["update", "delete"], Collection, (user, collection) => {
   if (!collection || user.teamId !== collection.teamId) {
     return false;
   }
-  if (user.isAdmin) {
+  if (!collection.isPrivate && user.isAdmin) {
     return true;
   }
 
